@@ -93,7 +93,7 @@ reloadScript =  (address, content)->
     }
   </script>
   """
-  let bodyIdx = content.lastIndexOf "</body>"
+  bodyIdx = content.lastIndexOf "</body>"
   if bodyIdx > -1
     "#{content.slice 0, bodyIdx}#{html}#{content.slice bodyIdx}"
   else
