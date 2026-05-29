@@ -4,7 +4,7 @@
 
 This is a CoffeeScript file I wrote in 2023. I expect to continue using it, largely as-is, until 2033.
 
-I use it in my [Cakefiles](https://github.com/ivanreese/sweetbread), my personal [CLI](https://github.com/ivanreese/i), and little one-off scripts.
+I use it in my [Cakefiles](https://github.com/ivyreese/sweetbread), my personal [CLI](https://github.com/ivyreese/i), and little one-off scripts.
 
 ```coffeescript
 
@@ -36,7 +36,7 @@ I do use them. But…
 
 That thing I just said — "personal projects" — that's what this is for. *My* personal projects.
 
-It's really, really, really nice to have my own tools. I know when they'll change, and when they won't. I know what I need them to do, and *that's all they need to do*. I mean, look at [the code](https://github.com/ivanreese/please-reload/blob/main/please-reload.coffee). It's a single file, 200 LoC, only depends on Node, CoffeeScript, and a popular, zero-dependency websocket library. A stable runtime, a stable language, and some plumbing (that I can probably eventually replace with like 30 lines of Node). Like I said, I expect to continue using this largely as-is in 2033.
+It's really, really, really nice to have my own tools. I know when they'll change, and when they won't. I know what I need them to do, and *that's all they need to do*. I mean, look at [the code](https://github.com/ivyreese/please-reload/blob/main/please-reload.coffee). It's a single file, 200 LoC, only depends on Node, CoffeeScript, and a popular, zero-dependency websocket library. A stable runtime, a stable language, and some plumbing (that I can probably eventually replace with like 30 lines of Node). Like I said, I expect to continue using this largely as-is in 2033.
 
 ### License
 

@@ -1,6 +1,6 @@
 {
   "name": "please-reload",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "A plucky little live server that's trying its best.",
   "author": "Ivy Reese (https://ivy.boo)",
   "main": "please-reload.coffee",
@@ -11,6 +11,6 @@
   "license": "Unlicense",
   "dependencies": {
     "coffeescript": "^2.7.0",
-    "ws": "^8.13.0"
+    "ws": "^8.21.0"
   }
 }

@@ -30,7 +30,7 @@ exports.mimeTypes =
   mp4:    "video/mp4"
   pdf:    "application/pdf"
   png:    "image/png"
-  rss:    "text/xml"
+  rss:    "application/rss+xml"
   svg:    "image/svg+xml"
   swf:    "application/x-shockwave-flash"
   txt:    "text/plain"
@@ -40,7 +40,7 @@ exports.mimeTypes =
   woff2:  "font/woff2"
   woff:   "font/woff"
   xml:    "application/xml"
-  xslt:   "text/xml"
+  xslt:   "application/xslt+xml"
 
 # Who needs chalk when you can just roll your own ANSI escape sequences
 do ()->
