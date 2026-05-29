@@ -39,7 +39,7 @@ exports.mimeTypes =
   wgsl:   "text/wgsl"
   woff2:  "font/woff2"
   woff:   "font/woff"
-  xml:    "text/xml"
+  xml:    "application/xml"
   xslt:   "text/xml"
 
 # Who needs chalk when you can just roll your own ANSI escape sequences
@@ -118,8 +118,7 @@ handleRequest = (root)-> (req, res)->
     if filePath[-1..] isnt "/"
       return respond res, 302, null, location: req.url + "/"
     else
-      filePath += "/index.html"
-      filePath = filePath.replace "//", "/" # TODO: if we remove the slash on the previous line, can we remove this line?
+      filePath += "index.html"
       ext = "html"
 
   contentType = exports.mimeTypes[ext]
@@ -169,7 +168,7 @@ handleRequest = (root)-> (req, res)->
     fs.readFile filePath, (error, content)->
       return respond res, 404 if error?.code is "ENOENT"
       return respond res, 500, error.code if error?
-      content = reloadScript req.headers.host, "" + content if ext is "html"
+      content = reloadScript req.headers.host, "" + content if ext is "html" and req.headers.host
       respond res, 200, content, headers
 
 
@@ -193,8 +192,9 @@ createServer = (root, host, port, name)-> new Promise (resolve)->
     logStarted name, green "http://#{host}:#{port}"
     resolve port
 
-  # Store the websocket for firing reloads
-  websockets[name] = new ws.WebSocketServer { server }
+  # Store the websocket server for firing reloads, and upgrade the connection when a browser connects
+  websockets[name] = new ws.WebSocketServer { noServer: true }
+  server.on "upgrade", (r, s, h)-> websockets[name].handleUpgrade r, s, h, ()->
 
   server.listen { host, port: port }
 
@@ -203,7 +203,7 @@ exports.reload = ()->
   for name, websocket of websockets
     for client in websocket.clients
       if client.readyState is WebSocket.OPEN
-        websocket.send "reload"
+        client.send "reload"
         log green "Reload ##{++reloadCount}"
 
 # Given a root file path, serve those files at two addresses: localhost, and the current IP address
