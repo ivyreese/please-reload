@@ -196,15 +196,14 @@ createServer = (root, host, port, name)-> new Promise (resolve)->
   websockets[name] = new ws.WebSocketServer { noServer: true }
   server.on "upgrade", (r, s, h)-> websockets[name].handleUpgrade r, s, h, ()->
 
-  server.listen { host, port: port }
+  server.listen { host, port }
 
 # Reload any connected browsers
 exports.reload = ()->
   for name, websocket of websockets
-    for client in websocket.clients
+    for client from websocket.clients
       if client.readyState is WebSocket.OPEN
         client.send "reload"
-        log green "Reload ##{++reloadCount}"
 
 # Given a root file path, serve those files at two addresses: localhost, and the current IP address
 # Optionally open a browser with this server. By default, opens the root. Set the second arg to false

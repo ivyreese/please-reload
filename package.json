@@ -1,6 +1,6 @@
 {
   "name": "please-reload",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "A plucky little live server that's trying its best.",
   "author": "Ivy Reese (https://ivy.boo)",
   "main": "please-reload.coffee",
